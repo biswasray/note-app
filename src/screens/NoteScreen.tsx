@@ -10,7 +10,7 @@ const NoteScreen = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const notes = useAppSelector((state) => state.noteReducer);
+  const notes = useAppSelector((state) => state.notes);
   const [note, setNote] = useState<INote>();
   const load = () => {
     if (id) {

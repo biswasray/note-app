@@ -9,7 +9,7 @@ function HomeScreen() {
   //   variant: "success",
   //   timeout: 1000,
   // });
-  const alertData = useAppSelector((state) => state.alertReducer);
+  const alertData = useAppSelector((state) => state.alert);
   // const notes = useSelector(
   //   (state: ReturnType<typeof store.getState>) => state.noteReducer
   // );

@@ -7,7 +7,7 @@ import { formatDate } from "../utils";
 import "./style.css";
 
 const SideNavbar = () => {
-  const notes = useAppSelector((state) => state.noteReducer);
+  const notes = useAppSelector((state) => state.notes);
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
