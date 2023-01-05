@@ -80,7 +80,8 @@ const NoteScreen = () => {
           className="m-1"
           onClick={(e) => {
             if (!id || !note) return;
-            dispatch(NoteAction.update(id, note));
+            // dispatch(NoteAction.update(id, note));
+            dispatch(NoteAction.updateAsync(id, note));
             dispatch(
               AlertAction.show({
                 body: "Saved...",

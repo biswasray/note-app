@@ -1,7 +1,9 @@
 import { Outlet } from "react-router-dom";
 import SideNavbar from "../components/SideNavbar";
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import AlertBar from "../components/AlertBar";
+import { useEffect } from "react";
+import { NoteAction } from "../actions/note";
 
 function HomeScreen() {
   // const [alertData, setAlertData] = useState<IAlert>({
@@ -10,9 +12,13 @@ function HomeScreen() {
   //   timeout: 1000,
   // });
   const alertData = useAppSelector((state) => state.alert);
+  const dispatch = useAppDispatch();
   // const notes = useSelector(
   //   (state: ReturnType<typeof store.getState>) => state.noteReducer
   // );
+  useEffect(() => {
+    dispatch(NoteAction.fetchAsync());
+  }, []);
   return (
     <>
       <div

@@ -7,16 +7,21 @@ const initialState: INote[] = [];
 
 export const noteReducer = (state = initialState, action: INoteAction) => {
   switch (action.type) {
+    case ACTIONS.LOAD:
+      return action.payload?.notes || [];
     case ACTIONS.CREATE:
-      const { title = "no title", body = "" } = action.payload?.note as INote;
-      let temp = {
-        id: randomUUID(),
-        title,
-        body,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      };
-      return [...state, temp];
+      // const { title = "no title", body = "" } = action.payload?.note as INote;
+      // let temp = {
+      //   id: randomUUID(),
+      //   title,
+      //   body,
+      //   createdAt: new Date(),
+      //   updatedAt: new Date(),
+      // };
+      if (!action.payload?.note) {
+        return state;
+      }
+      return [...state, action.payload.note];
     case ACTIONS.GET_ALL:
       return state;
     case ACTIONS.GET:

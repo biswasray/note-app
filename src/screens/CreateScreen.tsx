@@ -59,8 +59,14 @@ const CreateScreen = () => {
           className="m-1"
           onClick={(e) => {
             if (title.current?.value && body.current?.value) {
+              // dispatch(
+              //   NoteAction.create({
+              //     title: title.current.value,
+              //     body: body.current.value,
+              //   })
+              // );
               dispatch(
-                NoteAction.create({
+                NoteAction.createAsync({
                   title: title.current.value,
                   body: body.current.value,
                 })

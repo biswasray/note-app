@@ -1,6 +1,7 @@
 export const randomUUID = (length = 6) =>
   `${Math.floor(Math.random() * Math.pow(10, length))}`;
-export function formatDate(date: Date) {
+export function formatDate(date: Date | string) {
+  if (typeof date === "string") date = new Date(date);
   const p = new Intl.DateTimeFormat("en", {
     year: "numeric",
     month: "2-digit",

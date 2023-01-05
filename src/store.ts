@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, legacy_createStore as createStore } from "redux";
 import thunk, { ThunkDispatch } from "redux-thunk";
 import rootReducer from "./reducers";
 
@@ -10,7 +10,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AsyncAction = (
   dispatch: typeof store.dispatch,
   getState: typeof store.getState
-) => Promise<any>;
+) => Promise<ReturnType<typeof store.dispatch>>;
 // export type AppDispatch = typeof store.dispatch;
 export type AppDispatch = ThunkDispatch<
   ReturnType<typeof store.getState>,

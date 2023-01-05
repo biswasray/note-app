@@ -60,7 +60,8 @@ const SideNavbar = () => {
                       className="remove-mybtn"
                       variant="outline-danger"
                       onClick={() => {
-                        dispatch(NoteAction.remove(note.id));
+                        // dispatch(NoteAction.remove(note.id));
+                        dispatch(NoteAction.removeAsync(note.id));
                         dispatch(
                           AlertAction.show({
                             body: "Deleting...",
