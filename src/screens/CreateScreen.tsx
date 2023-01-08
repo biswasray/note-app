@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { NoteAction } from "../actions/note";
-import { useAppDispatch } from "../hooks";
 import "../components/style.css";
-import { AlertAction } from "../actions/alert";
+import { show } from "../features/alert/alertSlice";
+import { create } from "../features/note/noteSlice";
+import { useAppDispatch } from "../store";
 
 const CreateScreen = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +44,7 @@ const CreateScreen = () => {
           variant="outline-danger"
           onClick={() => {
             dispatch(
-              AlertAction.show({
+              show({
                 body: "Cancelled...",
                 show: true,
                 variant: "warning",
@@ -66,15 +66,17 @@ const CreateScreen = () => {
               //   })
               // );
               dispatch(
-                NoteAction.createAsync({
-                  title: title.current.value,
-                  body: body.current.value,
+                create({
+                  note: {
+                    title: title.current.value,
+                    body: body.current.value,
+                  },
                 })
               );
               title.current.value = "";
               body.current.value = "";
               dispatch(
-                AlertAction.show({
+                show({
                   body: "Created...",
                   show: true,
                   variant: "success",
@@ -82,7 +84,7 @@ const CreateScreen = () => {
               );
             } else {
               dispatch(
-                AlertAction.show({
+                show({
                   body: "Fields required!",
                   show: true,
                   variant: "danger",

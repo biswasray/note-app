@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
-import { AlertAction } from "../actions/alert";
-import { NoteAction } from "../actions/note";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { show } from "../features/alert/alertSlice";
+import { update } from "../features/note/noteSlice";
 import { INote } from "../interfaces/note";
+import { useAppDispatch, useAppSelector } from "../store";
 
 const NoteScreen = () => {
   const { id } = useParams();
@@ -65,7 +65,7 @@ const NoteScreen = () => {
           variant="outline-danger"
           onClick={(e) => {
             dispatch(
-              AlertAction.show({
+              show({
                 body: "Discarding Changes...",
                 show: true,
                 variant: "warning",
@@ -81,9 +81,9 @@ const NoteScreen = () => {
           onClick={(e) => {
             if (!id || !note) return;
             // dispatch(NoteAction.update(id, note));
-            dispatch(NoteAction.updateAsync(id, note));
+            dispatch(update({ id, note }));
             dispatch(
-              AlertAction.show({
+              show({
                 body: "Saved...",
                 show: true,
                 variant: "info",
