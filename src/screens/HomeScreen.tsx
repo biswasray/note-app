@@ -1,7 +1,9 @@
 import { Outlet } from "react-router-dom";
 import SideNavbar from "../components/SideNavbar";
 import AlertBar from "../components/AlertBar";
-import { useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
+import { useEffect } from "react";
+import { fetchNotes } from "../features/note/noteSlice";
 
 function HomeScreen() {
   // const [alertData, setAlertData] = useState<IAlert>({
@@ -10,13 +12,14 @@ function HomeScreen() {
   //   timeout: 1000,
   // });
   const alertData = useAppSelector((state) => state.alert);
+  const dispatch = useAppDispatch();
   // const notes = useSelector(
   //   (state: ReturnType<typeof store.getState>) => state.noteReducer
   // );
   /** Fetch data from backend */
-  // useEffect(() => {
-  //   dispatch(NoteAction.fetchAsync());
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchNotes());
+  }, [dispatch]);
   return (
     <>
       <div

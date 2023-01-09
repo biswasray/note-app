@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { show } from "../features/alert/alertSlice";
-import { update } from "../features/note/noteSlice";
+import { updateNote } from "../features/note/noteSlice";
 import { INote } from "../interfaces/note";
 import { useAppDispatch, useAppSelector } from "../store";
 
@@ -80,8 +80,8 @@ const NoteScreen = () => {
           className="m-1"
           onClick={(e) => {
             if (!id || !note) return;
-            // dispatch(NoteAction.update(id, note));
-            dispatch(update({ id, note }));
+            // dispatch(update({ id, note }));
+            dispatch(updateNote({ id, note }));
             dispatch(
               show({
                 body: "Saved...",

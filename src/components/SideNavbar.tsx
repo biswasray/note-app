@@ -1,7 +1,7 @@
 import { Button, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { show } from "../features/alert/alertSlice";
-import { remove } from "../features/note/noteSlice";
+import { removeNote } from "../features/note/noteSlice";
 import { useAppDispatch, useAppSelector } from "../store";
 import { formatDate } from "../utils";
 import "./style.css";
@@ -60,8 +60,8 @@ const SideNavbar = () => {
                       className="remove-mybtn"
                       variant="outline-danger"
                       onClick={() => {
-                        // dispatch(NoteAction.remove(note.id));
-                        dispatch(remove({ id: note.id }));
+                        // dispatch(remove({ id: note.id }));
+                        dispatch(removeNote(note.id));
                         dispatch(
                           show({
                             body: "Deleting...",

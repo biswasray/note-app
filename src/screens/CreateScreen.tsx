@@ -3,7 +3,7 @@ import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../components/style.css";
 import { show } from "../features/alert/alertSlice";
-import { create } from "../features/note/noteSlice";
+import { createNote } from "../features/note/noteSlice";
 import { useAppDispatch } from "../store";
 
 const CreateScreen = () => {
@@ -60,17 +60,17 @@ const CreateScreen = () => {
           onClick={(e) => {
             if (title.current?.value && body.current?.value) {
               // dispatch(
-              //   NoteAction.create({
-              //     title: title.current.value,
-              //     body: body.current.value,
+              //   create({
+              //     note: {
+              //       title: title.current.value,
+              //       body: body.current.value,
+              //     },
               //   })
               // );
               dispatch(
-                create({
-                  note: {
-                    title: title.current.value,
-                    body: body.current.value,
-                  },
+                createNote({
+                  title: title.current.value,
+                  body: body.current.value,
                 })
               );
               title.current.value = "";
