@@ -70,16 +70,22 @@ export const notesSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchNotes.fulfilled, (state, action) => {
-      state = action.payload;
+      // state = action.payload;
+      return action.payload;
     });
     builder.addCase(createNote.fulfilled, (state, action) => {
-      state.push(action.payload);
+      // state.push(action.payload);
+      return [...state, action.payload];
     });
     builder.addCase(updateNote.fulfilled, (state, action) => {
-      state = action.payload;
+      // console.log(action.payload);
+      // state = action.payload;
+      return action.payload;
     });
     builder.addCase(removeNote.fulfilled, (state, action) => {
-      state = action.payload;
+      // console.log(action.payload);
+      // state = action.payload;
+      return action.payload;
     });
   },
 });
